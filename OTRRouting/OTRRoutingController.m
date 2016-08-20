@@ -1,21 +1,21 @@
 //
-//  TBMapzenRoutingController.m
-//  TBMapzenRouting
+//  OTRRoutingController.m
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
-#import "TBMapzenRoutingController.h"
+#import "OTRRoutingController.h"
 
-@interface TBMapzenRoutingController ()
+@interface OTRRoutingController ()
 
 @property (nonatomic, strong, nonnull) NSURLSession *urlSessionManager;
 
 @end
 
 
-@implementation TBMapzenRoutingController
+@implementation OTRRoutingController
 
 - (instancetype _Nonnull)initWithApiKey:(NSString * _Nonnull)apiKey {
   self = [super init];
@@ -27,15 +27,15 @@
 }
 
 
-- (id _Nullable)requestRouteWithLocations:(NSArray<TBMapzenRoutingPoint*>* _Nonnull)locations
-                             costingModel:(TBMapzenRoutingCostingModel)costing
+- (id _Nullable)requestRouteWithLocations:(NSArray<OTRRoutingPoint*>* _Nonnull)locations
+                             costingModel:(OTRRoutingCostingModel)costing
                             costingOption:(NSDictionary<NSString*, NSObject*>* _Nullable)costingOptions
                         directionsOptions:(NSDictionary<NSString*, NSObject*>* _Nullable)directionsOptions
-                                 callback:(void (^ _Nonnull)(TBMapzenRoutingResult  * _Nullable result,
+                                 callback:(void (^ _Nonnull)(OTRRoutingResult  * _Nullable result,
                                                              id _Nullable invalidationToken,
                                                              NSError * _Nullable error ))callback {
   if(locations.count < 2) {
-    callback(nil, nil, [NSError errorWithDomain:@"TBMapzenRoutingController"
+    callback(nil, nil, [NSError errorWithDomain:@"OTRRoutingController"
                                            code:0
                                        userInfo:@{NSLocalizedDescriptionKey: @"Locations array must contain 2 or more locations"}]);
     return nil;
@@ -43,12 +43,12 @@
   
   NSMutableDictionary *jsonParameters = [NSMutableDictionary dictionaryWithCapacity:3];
   jsonParameters[@"api_key"] = self.apiKey;
-  jsonParameters[@"costing"] = [TBMapzenRoutingTypes stringFromCostingModel:costing];
-  jsonParameters[@"locations"] = [TBMapzenRoutingController convertLocationsToDictionarys:locations];
+  jsonParameters[@"costing"] = [OTRRoutingTypes stringFromCostingModel:costing];
+  jsonParameters[@"locations"] = [OTRRoutingController convertLocationsToDictionarys:locations];
   
   if(costingOptions) {
     if(![NSJSONSerialization isValidJSONObject:costingOptions]) {
-      callback(nil, nil, [NSError errorWithDomain:@"TBMapzenRoutingController"
+      callback(nil, nil, [NSError errorWithDomain:@"OTRRoutingController"
                                              code:0
                                          userInfo:@{NSLocalizedDescriptionKey: @"costingOptions is not a valid json object"}]);
       return nil;
@@ -58,7 +58,7 @@
   
   if(directionsOptions) {
     if(![NSJSONSerialization isValidJSONObject:directionsOptions]) {
-      callback(nil, nil, [NSError errorWithDomain:@"TBMapzenRoutingController"
+      callback(nil, nil, [NSError errorWithDomain:@"OTRRoutingController"
                                              code:0
                                          userInfo:@{NSLocalizedDescriptionKey: @"directionsOptions is not a valid json object"}]);
       return nil;
@@ -103,7 +103,7 @@
                                               userInfo:@{NSLocalizedDescriptionKey: @"response is not a valid json object"}]);
          });
        } else {
-         TBMapzenRoutingResult *result = [TBMapzenRoutingController parseServerResponse:responseDictionary
+         OTRRoutingResult *result = [OTRRoutingController parseServerResponse:responseDictionary
                                                                                    task:task
                                                                                   error:&error];
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -124,17 +124,17 @@
 }
 
 
-+ (TBMapzenRoutingResult* _Nullable)parseServerResponse:(NSDictionary * _Nonnull)response
++ (OTRRoutingResult* _Nullable)parseServerResponse:(NSDictionary * _Nonnull)response
                                                    task:(NSURLSessionDataTask * _Nonnull)task
                                                   error:(NSError * _Nullable *)error {
-  TBMapzenRoutingResult *result = [TBMapzenRoutingResult resultFromResponse:response];
+  OTRRoutingResult *result = [OTRRoutingResult resultFromResponse:response];
   return result;
 }
 
 
-+ (NSArray <NSDictionary*> *)convertLocationsToDictionarys:(NSArray<TBMapzenRoutingPoint*>* _Nonnull)locations {
++ (NSArray <NSDictionary*> *)convertLocationsToDictionarys:(NSArray<OTRRoutingPoint*>* _Nonnull)locations {
   NSMutableArray *output = [NSMutableArray arrayWithCapacity:locations.count];
-  for(TBMapzenRoutingPoint *point in locations) {
+  for(OTRRoutingPoint *point in locations) {
     [output addObject:[point asDictionary]];
   }
   return output;

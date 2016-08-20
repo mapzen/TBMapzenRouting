@@ -1,8 +1,8 @@
 //
-//  TBMapzenRoutingResultManeuver.h
-//  TBMapzenRouting
+//  OTRRoutingResultManeuver.h
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, TBMapzenRoutingResultManeuverType) {
   TBMapzenRoutingResultManeuverTypePostTransitConnectionDestination = 36
 };
 
-@interface TBMapzenRoutingResultManeuver : NSObject
+@interface OTRRoutingResultManeuver : NSObject
 
 /** Create a Maneuver object by parsing an element of the maneuver array of a leg from the server json response. */
 + (instancetype _Nullable)maneuverFromDictionary:(NSDictionary * _Nonnull)response;

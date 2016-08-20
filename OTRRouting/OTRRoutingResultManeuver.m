@@ -1,17 +1,17 @@
 //
-//  TBMapzenRoutingResultManeuver.m
-//  TBMapzenRouting
+//  OTRRoutingResultManeuver.m
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
-#import "TBMapzenRoutingResultManeuver.h"
+#import "OTRRoutingResultManeuver.h"
 
-@implementation TBMapzenRoutingResultManeuver
+@implementation OTRRoutingResultManeuver
 
 + (instancetype _Nullable)maneuverFromDictionary:(NSDictionary * _Nonnull)response {
-  TBMapzenRoutingResultManeuver *maneuver = [[TBMapzenRoutingResultManeuver alloc] init];
+  OTRRoutingResultManeuver *maneuver = [[OTRRoutingResultManeuver alloc] init];
   
   maneuver.type = [response[@"type"] unsignedLongValue];
   maneuver.instruction = response[@"instruction"];

@@ -1,17 +1,18 @@
 //
-//  TBMapzenRoutingResult.m
-//  TBMapzenRouting
+//  OTRRoutingResult.m
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
-#import "TBMapzenRoutingResult.h"
 
-@implementation TBMapzenRoutingResult
+#import "OTRRoutingResult.h"
+
+@implementation OTRRoutingResult
 
 + (instancetype _Nullable)resultFromResponse:(NSDictionary * _Nonnull)response {
-  TBMapzenRoutingResult *result = [[TBMapzenRoutingResult alloc] init];
+  OTRRoutingResult *result = [[OTRRoutingResult alloc] init];
   NSDictionary *trip = response[@"trip"];
   result.length = [trip[@"summary"][@"length"] doubleValue];
   result.time = [trip[@"summary"][@"time"] doubleValue];
@@ -19,9 +20,9 @@
   result.language = trip[@"language"];
   result.locations = trip[@"locations"];
   
-  NSMutableArray <TBMapzenRoutingResultLeg *> *legs = [NSMutableArray arrayWithCapacity:[(NSArray*)trip[@"legs"] count]];
+  NSMutableArray <OTRRoutingResultLeg *> *legs = [NSMutableArray arrayWithCapacity:[(NSArray*)trip[@"legs"] count]];
   for(NSDictionary *leg in trip[@"legs"]) {
-    [legs addObject:[TBMapzenRoutingResultLeg legFromDictionary:leg]];
+    [legs addObject:[OTRRoutingResultLeg legFromDictionary:leg]];
   }
   result.legs = legs;
   return result;
