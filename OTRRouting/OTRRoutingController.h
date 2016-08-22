@@ -16,15 +16,11 @@
 /** URL for routing server. Defaults to URL for Mapzen Turn-by-Turn production server. */
 @property (nonatomic, strong, nonnull) NSString *baseUrl;
 
-/** Mapzen Turn-by-Turn api key. */
-@property (nonatomic, strong, nonnull) NSString *apiKey;
+//** URL Query components that get added to the URL Request. If you're connecting to Mapzen's hosted service, you'll want to add your API key here. */
+@property (nonatomic, strong, nonnull) NSMutableArray<NSURLQueryItem*> *urlQueryComponents;
 
-/**
- Create a new routing controller configured to connect to the Mapzen Turn-by-Turn production server.
- 
- @param apiKey API to be used for routing requests.
- */
-- (instancetype _Nonnull)initWithApiKey:(NSString * _Nonnull)apiKey;
+/** Create a new routing controller configured to connect to the Mapzen Turn-by-Turn production server. */
+- (instancetype _Nonnull)init;
 
 /**
  Request a route.
