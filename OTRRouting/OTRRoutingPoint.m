@@ -6,13 +6,12 @@
 //
 //
 
-#import <CoreLocation/CoreLocation.h>
 #import "OTRRoutingPoint.h"
 #import "OTRRoutingTypes.h"
 
 @implementation OTRRoutingPoint
 
-+ (instancetype _Nonnull)pointWithCoordinate:(CLLocationCoordinate2D)coordinate type:(OTRRoutingPointType)type {
++ (instancetype _Nonnull)pointWithCoordinate:(OTRGeoPoint)coordinate type:(OTRRoutingPointType)type {
   OTRRoutingPoint *point = [[OTRRoutingPoint alloc] init];
   point.coordinate = coordinate;
   point.type = type;

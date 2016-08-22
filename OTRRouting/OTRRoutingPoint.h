@@ -12,7 +12,7 @@
 @interface OTRRoutingPoint : NSObject
 
 /** Coordinate of the point */
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (nonatomic, assign) OTRGeoPoint coordinate;
 
 /** Type of location, either break or through. A break is a stop, so the first and last locations must be of type break. A through location is one that the route path travels through, and is useful to force a route to go through location. The path is not allowed to reverse direction at the through locations. If no type is provided, the type is assumed to be a break. */
 @property (nonatomic, assign) OTRRoutingPointType type;
@@ -22,7 +22,7 @@
 
 /** Create a new point.
  */
-+ (instancetype _Nonnull)pointWithCoordinate:(CLLocationCoordinate2D)coordinate type:(OTRRoutingPointType)type;
++ (instancetype _Nonnull)pointWithCoordinate:(OTRGeoPoint)coordinate type:(OTRRoutingPointType)type;
 
 /** Get the dictionary representation of the point, used for creating server query. */
 - (NSDictionary * _Nonnull)asDictionary;
