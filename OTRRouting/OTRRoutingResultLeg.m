@@ -1,37 +1,35 @@
 //
-//  TBMapzenRoutingResultLeg.m
-//  TBMapzenRouting
+//  OTRRoutingResultLeg.m
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
-#import <CoreLocation/CoreLocation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import "TBMapzenRoutingResultLeg.h"
+#import "OTRRoutingResultLeg.h"
 
-@interface TBMapzenRoutingResultLeg ()
+@interface OTRRoutingResultLeg ()
 
-@property (nonatomic, strong, nonnull) NSArray <TBMapzenRoutingResultManeuver*>* maneuvers;
+@property (nonatomic, strong, nonnull) NSArray <OTRRoutingResultManeuver*>* maneuvers;
 @property (nonatomic, assign) NSUInteger coordinateCount;
 @property (nonatomic, assign, nullable) CLLocationCoordinate2D *coordinates;
 
 @end
 
 
-@implementation TBMapzenRoutingResultLeg
+@implementation OTRRoutingResultLeg
 
 
 + (instancetype _Nullable)legFromDictionary:(NSDictionary * _Nonnull)response {
-  TBMapzenRoutingResultLeg *leg = [[TBMapzenRoutingResultLeg alloc] init];
+  OTRRoutingResultLeg *leg = [[OTRRoutingResultLeg alloc] init];
   leg.length = [response[@"summary"][@"length"] doubleValue];
   leg.time = [response[@"summary"][@"time"] doubleValue];
   NSMutableArray *maneuvers = [NSMutableArray arrayWithCapacity:[(NSArray*)response[@"maneuvers"] count]];
   for(NSDictionary *maneuver in response[@"maneuvers"]) {
-    [maneuvers addObject:[TBMapzenRoutingResultManeuver maneuverFromDictionary:maneuver]];
+    [maneuvers addObject:[OTRRoutingResultManeuver maneuverFromDictionary:maneuver]];
   }
   leg.maneuvers = maneuvers;
-  leg.coordinates = [TBMapzenRoutingResultLeg decodePolyline:response[@"shape"]
+  leg.coordinates = [OTRRoutingResultLeg decodePolyline:response[@"shape"]
                                              length:&leg->_coordinateCount];
   
   return leg;

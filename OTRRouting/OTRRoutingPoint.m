@@ -1,19 +1,19 @@
 //
-//  TBMapzenRoutingPoint.m
-//  TBMapzenRouting
+//  OTRRoutingPoint.m
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
 #import <CoreLocation/CoreLocation.h>
-#import "TBMapzenRoutingPoint.h"
-#import "TBMapzenRoutingTypes.h"
+#import "OTRRoutingPoint.h"
+#import "OTRRoutingTypes.h"
 
-@implementation TBMapzenRoutingPoint
+@implementation OTRRoutingPoint
 
-+ (instancetype _Nonnull)pointWithCoordinate:(CLLocationCoordinate2D)coordinate type:(TBMapzenRoutingPointType)type {
-  TBMapzenRoutingPoint *point = [[TBMapzenRoutingPoint alloc] init];
++ (instancetype _Nonnull)pointWithCoordinate:(CLLocationCoordinate2D)coordinate type:(OTRRoutingPointType)type {
+  OTRRoutingPoint *point = [[OTRRoutingPoint alloc] init];
   point.coordinate = coordinate;
   point.type = type;
   return point;
@@ -24,7 +24,7 @@
   NSDictionary *dictionary = @{
                                @"lat": @(self.coordinate.latitude),
                                @"lon": @(self.coordinate.longitude),
-                               @"type": [TBMapzenRoutingTypes stringFromRoutingPointType:self.type]
+                               @"type": [OTRRoutingTypes stringFromRoutingPointType:self.type]
                                };
   if(self.heading) {
     NSMutableDictionary *mutable = [dictionary mutableCopy];

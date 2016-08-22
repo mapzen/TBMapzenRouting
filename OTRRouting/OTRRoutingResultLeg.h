@@ -1,17 +1,17 @@
 //
-//  TBMapzenRoutingResultLeg.h
-//  TBMapzenRouting
+//  OTRRoutingResultLeg.h
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
-#import "TBMapzenRoutingResultManeuver.h"
+#import "OTRRoutingResultManeuver.h"
 
-@interface TBMapzenRoutingResultLeg : NSObject
+@interface OTRRoutingResultLeg : NSObject
 
 /** Estimated elapsed time to complete the leg. */
 @property (nonatomic, assign) CGFloat length;
@@ -20,7 +20,7 @@
 @property (nonatomic, assign) CGFloat time;
 
 /** The maneuvers the make up the leg. */
-@property (nonatomic, readonly, nonnull) NSArray <TBMapzenRoutingResultManeuver*>* maneuvers;
+@property (nonatomic, readonly, nonnull) NSArray <OTRRoutingResultManeuver*>* maneuvers;
 
 /** The number of coordinates in the trip path. */
 @property (nonatomic, readonly) NSUInteger coordinateCount;

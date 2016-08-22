@@ -1,16 +1,16 @@
 //
-//  TBMapzenRoutingResult.h
-//  TBMapzenRouting
+//  OTRRoutingResult.h
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
 #import <Foundation/Foundation.h>
-#import "TBMapzenRoutingResultLeg.h"
+#import "OTRRoutingResultLeg.h"
 
 
-@interface TBMapzenRoutingResult : NSObject
+@interface OTRRoutingResult : NSObject
 
 /** Estimated elapsed time to complete the trip. */
 @property (nonatomic, assign) CGFloat length;
@@ -22,7 +22,7 @@
 @property (nonatomic, strong, nullable) NSString *units;
 
 /** The legs of the route. */
-@property (nonatomic, strong, nonnull) NSArray<TBMapzenRoutingResultLeg *> * legs;
+@property (nonatomic, strong, nonnull) NSArray<OTRRoutingResultLeg *> * legs;
 
 /** The language of the narration instructions. If the user specified a language in the directions options and the specified language was supported - this returned value will be equal to the specified value. Otherwise, this value will be the default (en-US) language.
  */

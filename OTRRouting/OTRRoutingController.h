@@ -1,17 +1,17 @@
 //
-//  TBMapzenRoutingController.h
-//  TBMapzenRouting
+//  OTRRoutingController.h
+//  on-the-road_ios
 //
-//  Created by Jesse Crocker on 7/19/16.
+//  Based upon the work in TBMapzenRouting created by Jesse Crocker
 //
 //
 
 #import <Foundation/Foundation.h>
-#import "TBMapzenRoutingResult.h"
-#import "TBMapzenRoutingTypes.h"
-#import "TBMapzenRoutingPoint.h"
+#import "OTRRoutingResult.h"
+#import "OTRRoutingTypes.h"
+#import "OTRRoutingPoint.h"
 
-@interface TBMapzenRoutingController : NSObject
+@interface OTRRoutingController : NSObject
 
 /** URL for routing server. Defaults to URL for Mapzen Turn-by-Turn production server. */
 @property (nonatomic, strong, nonnull) NSString *baseUrl;
@@ -37,11 +37,11 @@
 
  @return an opaque object that can be used to cancel the routing request before it has completed.
  */
-- (id _Nullable)requestRouteWithLocations:(NSArray<TBMapzenRoutingPoint*>* _Nonnull)locations
-                     costingModel:(TBMapzenRoutingCostingModel)costing
+- (id _Nullable)requestRouteWithLocations:(NSArray<OTRRoutingPoint*>* _Nonnull)locations
+                     costingModel:(OTRRoutingCostingModel)costing
                     costingOption:(NSDictionary<NSString*, NSObject*>* _Nullable)costingOptions
                 directionsOptions:(NSDictionary<NSString*, NSObject*>* _Nullable)directionsOptions
-                         callback:(void (^ _Nonnull)(TBMapzenRoutingResult  * _Nullable result,
+                         callback:(void (^ _Nonnull)(OTRRoutingResult  * _Nullable result,
                                                      id _Nullable invalidationToken,
                                                      NSError * _Nullable error ))callback;
 
