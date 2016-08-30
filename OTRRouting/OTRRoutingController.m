@@ -17,12 +17,11 @@
 
 @implementation OTRRoutingController
 
-- (instancetype _Nonnull)initWithApiKey:(NSString * _Nonnull)apiKey {
+- (instancetype _Nonnull)init {
   self = [super init];
-  self.apiKey = apiKey;
   self.baseUrl = @"https://valhalla.mapzen.com/route?";
-  NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-  self.urlSessionManager = [NSURLSession sessionWithConfiguration:configuration];
+  self.urlSessionManager = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+  self.urlQueryComponents = [[NSMutableArray alloc] init];
   return self;
 }
 
@@ -41,8 +40,7 @@
     return nil;
   }
   
-  NSMutableDictionary *jsonParameters = [NSMutableDictionary dictionaryWithCapacity:3];
-  jsonParameters[@"api_key"] = self.apiKey;
+  NSMutableDictionary *jsonParameters = [NSMutableDictionary dictionaryWithCapacity:2];
   jsonParameters[@"costing"] = [OTRRoutingTypes stringFromCostingModel:costing];
   jsonParameters[@"locations"] = [OTRRoutingController convertLocationsToDictionarys:locations];
   
@@ -72,9 +70,14 @@
   NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
   
   NSURLComponents *urlComponents = [NSURLComponents componentsWithString:self.baseUrl];
-  urlComponents.queryItems = @[[NSURLQueryItem queryItemWithName:@"api_key" value:self.apiKey],
-                               [NSURLQueryItem queryItemWithName:@"json" value:jsonString]
-                               ];
+  NSMutableArray *queryComponents = [[NSMutableArray alloc] init];
+  [queryComponents addObject:[NSURLQueryItem queryItemWithName:@"json" value:jsonString]];
+  //Adding the components to a newly created array avoids re-adding the same values multiple times and thus having weird issues later
+  if (self.urlQueryComponents.count > 0) {
+    [queryComponents addObjectsFromArray:self.urlQueryComponents];
+  }
+
+  urlComponents.queryItems = queryComponents;
   
   NSURLSessionDataTask *task;
   task =
