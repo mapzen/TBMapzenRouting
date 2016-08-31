@@ -8,6 +8,13 @@
 
 #import "OTRRoutingTypes.h"
 
+OTRGeoPoint OTRGeoPointMake(double latitude, double longitude){
+  struct OTRGeoPoint point;
+  point.latitude = latitude;
+  point.longitude = longitude;
+  return point;
+}
+
 @implementation OTRRoutingTypes
 
 + (NSString* _Nonnull)stringFromCostingModel:(OTRRoutingCostingModel)costing {

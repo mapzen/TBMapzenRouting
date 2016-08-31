@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		884C2B711D411E6A003E29FA /* OTRRoutingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B661D411E6A003E29FA /* OTRRoutingController.m */; };
 		884C2B721D411E6B003E29FA /* OTRRoutingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B681D411E6A003E29FA /* OTRRoutingPoint.m */; };
-		884C2B781D411EFA003E29FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884C2B771D411EFA003E29FA /* CoreLocation.framework */; };
 		DB0EA1D21D673DB3005BB5C2 /* OTRRoutingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0EA1D11D673DB3005BB5C2 /* OTRRoutingResult.m */; };
 		DBBCD17F1D67401100458560 /* OTRRoutingResultLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBCD17E1D67401100458560 /* OTRRoutingResultLeg.m */; };
 		DBBCD1821D67419000458560 /* OTRRoutingResultManeuver.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBCD1811D67419000458560 /* OTRRoutingResultManeuver.m */; };
@@ -35,7 +34,6 @@
 		884C2B661D411E6A003E29FA /* OTRRoutingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRRoutingController.m; sourceTree = "<group>"; };
 		884C2B671D411E6A003E29FA /* OTRRoutingPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRRoutingPoint.h; sourceTree = "<group>"; };
 		884C2B681D411E6A003E29FA /* OTRRoutingPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRRoutingPoint.m; sourceTree = "<group>"; };
-		884C2B771D411EFA003E29FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB0EA1D01D673DB3005BB5C2 /* OTRRoutingResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRRoutingResult.h; sourceTree = "<group>"; };
 		DB0EA1D11D673DB3005BB5C2 /* OTRRoutingResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRRoutingResult.m; sourceTree = "<group>"; };
 		DBBCD17D1D67401100458560 /* OTRRoutingResultLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRRoutingResultLeg.h; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				884C2B781D411EFA003E29FA /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +58,6 @@
 		884C2B4F1D411E48003E29FA = {
 			isa = PBXGroup;
 			children = (
-				884C2B771D411EFA003E29FA /* CoreLocation.framework */,
 				884C2B5A1D411E48003E29FA /* OTRRouting */,
 				884C2B591D411E48003E29FA /* Products */,
 			);
@@ -129,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 884C2B531D411E48003E29FA /* Build configuration list for PBXProject "OTRRouting" */;
+			buildConfigurationList = 884C2B531D411E48003E29FA /* Build configuration list for PBXProject "TBMapzenRouting" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -266,7 +262,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		884C2B531D411E48003E29FA /* Build configuration list for PBXProject "OTRRouting" */ = {
+		884C2B531D411E48003E29FA /* Build configuration list for PBXProject "TBMapzenRouting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				884C2B5F1D411E48003E29FA /* Debug */,

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong, nonnull) NSArray <OTRRoutingResultManeuver*>* maneuvers;
 @property (nonatomic, assign) NSUInteger coordinateCount;
-@property (nonatomic, assign, nullable) CLLocationCoordinate2D *coordinates;
+@property (nonatomic, assign, nullable) OTRGeoPoint *coordinates;
 
 @end
 
@@ -49,12 +49,12 @@
 }
 
 
-+ (CLLocationCoordinate2D*)decodePolyline:(NSString*)polyline length:(NSUInteger*)outputLength {
++ (OTRGeoPoint*)decodePolyline:(NSString*)polyline length:(NSUInteger*)outputLength {
   const char *bytes = [polyline UTF8String];
   NSUInteger length = [polyline lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
   
   NSUInteger allocCount = length/4;
-  CLLocationCoordinate2D *coords = calloc(allocCount, sizeof(CLLocationCoordinate2D));
+  OTRGeoPoint *coords = calloc(allocCount, sizeof(OTRGeoPoint));
   
   NSUInteger idx = 0;
   NSUInteger coordIdx = 0;
@@ -87,11 +87,11 @@
     float deltaLon = ((res & 1) ? ~(res >> 1) : (res >> 1));
     longitude += deltaLon;
     
-    coords[coordIdx++] = CLLocationCoordinate2DMake(latitude * 1E-6, longitude * 1E-6);
+    coords[coordIdx++] = OTRGeoPointMake(latitude * 1E-6, longitude * 1E-6);
     
     if (coordIdx == allocCount) {
       allocCount += 10;
-      coords = realloc(coords, allocCount * sizeof(CLLocationCoordinate2D));
+      coords = realloc(coords, allocCount * sizeof(OTRGeoPoint));
     }
   }
   

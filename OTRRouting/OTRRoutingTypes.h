@@ -22,6 +22,14 @@ typedef NS_ENUM(NSUInteger, OTRRoutingCostingModel) {
   OTRRoutingCostingModelPedestrian
 };
 
+struct OTRGeoPoint {
+  double latitude;
+  double longitude;
+};
+typedef struct OTRGeoPoint OTRGeoPoint;
+
+OTRGeoPoint OTRGeoPointMake(double latitude, double longitude);
+
 @interface OTRRoutingTypes : NSObject
 
 + (NSString * _Nonnull)stringFromCostingModel:(OTRRoutingCostingModel)costing;
