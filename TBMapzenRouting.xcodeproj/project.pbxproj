@@ -29,6 +29,12 @@
 		DBDE07121D774DED00EF020F /* OTRRoutingResultLeg.h in Headers */ = {isa = PBXBuildFile; fileRef = DBBCD17D1D67401100458560 /* OTRRoutingResultLeg.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBDE07131D774DF400EF020F /* OTRRoutingResultManeuver.h in Headers */ = {isa = PBXBuildFile; fileRef = DBBCD1801D67419000458560 /* OTRRoutingResultManeuver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBDE07141D774DF700EF020F /* OTRRoutingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DBBCD1831D67432100458560 /* OTRRoutingTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBDE07171D79E02E00EF020F /* OTRRoutingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B661D411E6A003E29FA /* OTRRoutingController.m */; };
+		DBDE07181D79E03300EF020F /* OTRRoutingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B681D411E6A003E29FA /* OTRRoutingPoint.m */; };
+		DBDE07191D79E03700EF020F /* OTRRoutingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0EA1D11D673DB3005BB5C2 /* OTRRoutingResult.m */; };
+		DBDE071A1D79E03B00EF020F /* OTRRoutingResultLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBCD17E1D67401100458560 /* OTRRoutingResultLeg.m */; };
+		DBDE071B1D79E03E00EF020F /* OTRRoutingResultManeuver.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBCD1811D67419000458560 /* OTRRoutingResultManeuver.m */; };
+		DBDE071C1D79E04100EF020F /* OTRRoutingTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBCD1841D67432100458560 /* OTRRoutingTypes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDE071B1D79E03E00EF020F /* OTRRoutingResultManeuver.m in Sources */,
+				DBDE07181D79E03300EF020F /* OTRRoutingPoint.m in Sources */,
+				DBDE071C1D79E04100EF020F /* OTRRoutingTypes.m in Sources */,
+				DBDE071A1D79E03B00EF020F /* OTRRoutingResultLeg.m in Sources */,
+				DBDE07191D79E03700EF020F /* OTRRoutingResult.m in Sources */,
+				DBDE07171D79E02E00EF020F /* OTRRoutingController.m in Sources */,
 				DBDE06CF1D77452400EF020F /* on_the_roadTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
