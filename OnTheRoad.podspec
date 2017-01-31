@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OnTheRoad"
-  s.version      = "1.0.0-beta1"
+  s.version      = "0.9.0"
   s.summary      = "Request routes from Valhalla routing services, include Mapzen's Turn-by-Turn routing service."
 
   s.description  = <<-DESC
