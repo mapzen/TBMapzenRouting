@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "OTRRoutingResultLeg.h"
 
-
+/**
+ `OTRRoutingResult` is the top level object representing a route returned from the Valhalla server api. It can include multiple legs from mutliple locations.
+ */
 @interface OTRRoutingResult : NSObject
 
 /** Estimated elapsed time to complete the trip. */
@@ -32,7 +34,13 @@
  */
 @property (nonatomic, strong, nullable) NSArray <NSDictionary*> *locations;
 
-/** Create a response object by parsing the JSON returned by the web api. */
+/** 
+ Create a response object by parsing the JSON returned by the web api. 
+ 
+ @param response the parsed json response from the valhalla web api.
+ 
+ @return A routing result with possibly multiple routing legs.
+ */
 + (instancetype _Nullable)resultFromResponse:(NSDictionary * _Nonnull)response;
 
 @end

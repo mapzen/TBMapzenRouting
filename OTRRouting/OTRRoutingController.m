@@ -26,7 +26,7 @@
 }
 
 
-- (id _Nullable)requestRouteWithLocations:(NSArray<OTRRoutingPoint*>* _Nonnull)locations
+- (NSURLSessionDataTask * _Nullable)requestRouteWithLocations:(NSArray<OTRRoutingPoint*>* _Nonnull)locations
                              costingModel:(OTRRoutingCostingModel)costing
                             costingOption:(NSDictionary<NSString*, NSObject*>* _Nullable)costingOptions
                         directionsOptions:(NSDictionary<NSString*, NSObject*>* _Nullable)directionsOptions
@@ -120,10 +120,8 @@
 }
 
 
-- (void)cancelRoutingRequest:(id)requestToken {
-  if([requestToken isKindOfClass:[NSURLSessionDataTask class]]) {
-    [(NSURLSessionDataTask*)requestToken cancel];
-  }
+- (void)cancelRoutingRequest:(NSURLSessionDataTask *)requestToken {
+    [requestToken cancel];
 }
 
 

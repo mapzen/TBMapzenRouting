@@ -11,6 +11,9 @@
 #import "OTRRoutingResultManeuver.h"
 #import "OTRRoutingTypes.h"
 
+/**
+ 'OTRRoutingResultLeg' represents one particular leg of a `OTRRoutingResult`. It includes one or more `OTRRoutingResultManeuver`s and necessary metadata such as length and time and number of coordinates on the leg.
+ */
 @interface OTRRoutingResultLeg : NSObject
 
 /** Estimated elapsed time to complete the leg. */
@@ -31,7 +34,13 @@
  */
 @property (nonatomic, readonly, nullable) OTRGeoPoint *coordinates;
 
-/** Create a leg object by parsing an element of the leg array of the server json response. */
+/** 
+ Create a leg object by parsing an element of the leg array of the server json response. 
+ 
+ @param response Part of the response from the valhalla web api containing a particular leg.
+ 
+ @return One leg of a particular route to be included within a OTRRoutingResult
+ */
 + (instancetype _Nullable)legFromDictionary:(NSDictionary * _Nonnull)response;
 
 @end
