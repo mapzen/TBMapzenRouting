@@ -9,53 +9,65 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-typedef NS_ENUM(NSUInteger, TBMapzenRoutingResultManeuverType) {
-  TBMapzenRoutingResultManeuverTypeNone = 0,
-  TBMapzenRoutingResultManeuverTypeStart = 1,
-  TBMapzenRoutingResultManeuverTypeStartRight = 2,
-  TBMapzenRoutingResultManeuverTypeStartLeft = 3,
-  TBMapzenRoutingResultManeuverTypeDestination = 4,
-  TBMapzenRoutingResultManeuverTypeDestinationRight = 5,
-  TBMapzenRoutingResultManeuverTypeDestinationLeft = 6,
-  TBMapzenRoutingResultManeuverTypeBecomes = 7,
-  TBMapzenRoutingResultManeuverTypeContinue = 8,
-  TBMapzenRoutingResultManeuverTypeSlightRight = 9,
-  TBMapzenRoutingResultManeuverTypeRight = 10,
-  TBMapzenRoutingResultManeuverTypeSharpRight = 11,
-  TBMapzenRoutingResultManeuverTypeUturnRight = 12,
-  TBMapzenRoutingResultManeuverTypeUturnLeft = 13,
-  TBMapzenRoutingResultManeuverTypeSharpLeft = 14,
-  TBMapzenRoutingResultManeuverTypeLeft = 15,
-  TBMapzenRoutingResultManeuverTypeSlightLeft = 16,
-  TBMapzenRoutingResultManeuverTypeRampStraight = 17,
-  TBMapzenRoutingResultManeuverTypeRampRight = 18,
-  TBMapzenRoutingResultManeuverTypeRampLeft = 19,
-  TBMapzenRoutingResultManeuverTypeExitRight = 20,
-  TBMapzenRoutingResultManeuverTypeExitLeft = 21,
-  TBMapzenRoutingResultManeuverTypeStayStraight = 22,
-  TBMapzenRoutingResultManeuverTypeStayRight = 23,
-  TBMapzenRoutingResultManeuverTypeStayLeft = 24,
-  TBMapzenRoutingResultManeuverTypeMerge = 25,
-  TBMapzenRoutingResultManeuverTypeRoundaboutEnter = 26,
-  TBMapzenRoutingResultManeuverTypeRoundaboutExit = 27,
-  TBMapzenRoutingResultManeuverTypeFerryEnter = 28,
-  TBMapzenRoutingResultManeuverTypeFerryExit = 29,
-  TBMapzenRoutingResultManeuverTypeTransit = 30,
-  TBMapzenRoutingResultManeuverTypeTransitTransfer = 31,
-  TBMapzenRoutingResultManeuverTypeTransitRemainOn = 32,
-  TBMapzenRoutingResultManeuverTypeTransitConnectionStart = 33,
-  TBMapzenRoutingResultManeuverTypeTransitConnectionTransfer = 34,
-  TBMapzenRoutingResultManeuverTypeTransitConnectionDestination = 35,
-  TBMapzenRoutingResultManeuverTypePostTransitConnectionDestination = 36
+/**
+ `OTRRoutingResultManeuverType` is an enumeration containing all the possible different types of routing manuevers, and is directly aligned with the integer identifiers described by the Valhalla server api docs.
+ */
+typedef NS_ENUM(NSUInteger, OTRRoutingResultManeuverType) {
+  OTRRoutingResultManeuverTypeNone = 0,
+  OTRRoutingResultManeuverTypeStart = 1,
+  OTRRoutingResultManeuverTypeStartRight = 2,
+  OTRRoutingResultManeuverTypeStartLeft = 3,
+  OTRRoutingResultManeuverTypeDestination = 4,
+  OTRRoutingResultManeuverTypeDestinationRight = 5,
+  OTRRoutingResultManeuverTypeDestinationLeft = 6,
+  OTRRoutingResultManeuverTypeBecomes = 7,
+  OTRRoutingResultManeuverTypeContinue = 8,
+  OTRRoutingResultManeuverTypeSlightRight = 9,
+  OTRRoutingResultManeuverTypeRight = 10,
+  OTRRoutingResultManeuverTypeSharpRight = 11,
+  OTRRoutingResultManeuverTypeUturnRight = 12,
+  OTRRoutingResultManeuverTypeUturnLeft = 13,
+  OTRRoutingResultManeuverTypeSharpLeft = 14,
+  OTRRoutingResultManeuverTypeLeft = 15,
+  OTRRoutingResultManeuverTypeSlightLeft = 16,
+  OTRRoutingResultManeuverTypeRampStraight = 17,
+  OTRRoutingResultManeuverTypeRampRight = 18,
+  OTRRoutingResultManeuverTypeRampLeft = 19,
+  OTRRoutingResultManeuverTypeExitRight = 20,
+  OTRRoutingResultManeuverTypeExitLeft = 21,
+  OTRRoutingResultManeuverTypeStayStraight = 22,
+  OTRRoutingResultManeuverTypeStayRight = 23,
+  OTRRoutingResultManeuverTypeStayLeft = 24,
+  OTRRoutingResultManeuverTypeMerge = 25,
+  OTRRoutingResultManeuverTypeRoundaboutEnter = 26,
+  OTRRoutingResultManeuverTypeRoundaboutExit = 27,
+  OTRRoutingResultManeuverTypeFerryEnter = 28,
+  OTRRoutingResultManeuverTypeFerryExit = 29,
+  OTRRoutingResultManeuverTypeTransit = 30,
+  OTRRoutingResultManeuverTypeTransitTransfer = 31,
+  OTRRoutingResultManeuverTypeTransitRemainOn = 32,
+  OTRRoutingResultManeuverTypeTransitConnectionStart = 33,
+  OTRRoutingResultManeuverTypeTransitConnectionTransfer = 34,
+  OTRRoutingResultManeuverTypeTransitConnectionDestination = 35,
+  OTRRoutingResultManeuverTypePostTransitConnectionDestination = 36
 };
 
+/**
+ `OTRRoutingResultManeuver` is one particular route manuever contained in an `OTRRoutingResultLeg` object. It will be of a particular OTRRoutingResultManeuverType and contain necessary instructions and transitions and additional metadata for building out a turn-by-turn implementation.
+ */
 @interface OTRRoutingResultManeuver : NSObject
 
-/** Create a Maneuver object by parsing an element of the maneuver array of a leg from the server json response. */
+/** 
+ Create a Maneuver object by parsing an element of the maneuver array of a leg from the server json response.
+ 
+ @param response Part of the response from the valhalla web api containing a manuever.
+ 
+ @return A fully formed manuever included in an OTRRoutingResultLeg object
+ */
 + (instancetype _Nullable)maneuverFromDictionary:(NSDictionary * _Nonnull)response;
 
 /** Type of maneuver. */
-@property (nonatomic, assign) TBMapzenRoutingResultManeuverType type;
+@property (nonatomic, assign) OTRRoutingResultManeuverType type;
 
 /** Text suitable for use as a verbal alert in a navigation application. The transition alert instruction will prepare the user for the forthcoming transition. For example: “Turn right onto North Prince Street”. */
 @property (nonatomic, strong, nullable) NSString *instruction;
