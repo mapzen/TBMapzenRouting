@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DC7F09E1E73583B009E722B /* OTRRoutingControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC7F09D1E73583B009E722B /* OTRRoutingControllerTests.m */; };
 		884C2B711D411E6A003E29FA /* OTRRoutingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B661D411E6A003E29FA /* OTRRoutingController.m */; };
 		884C2B721D411E6B003E29FA /* OTRRoutingPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 884C2B681D411E6A003E29FA /* OTRRoutingPoint.m */; };
 		DB0EA1D21D673DB3005BB5C2 /* OTRRoutingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0EA1D11D673DB3005BB5C2 /* OTRRoutingResult.m */; };
@@ -60,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7DC7F09D1E73583B009E722B /* OTRRoutingControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRRoutingControllerTests.m; sourceTree = "<group>"; };
 		884C2B581D411E48003E29FA /* libOTRRouting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOTRRouting.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		884C2B641D411E6A003E29FA /* OTRRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRRouting.h; sourceTree = "<group>"; };
 		884C2B651D411E6A003E29FA /* OTRRoutingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRRoutingController.h; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				DBDE06CE1D77452400EF020F /* on_the_roadTests.m */,
 				DBDE06D01D77452400EF020F /* Info.plist */,
+				7DC7F09D1E73583B009E722B /* OTRRoutingControllerTests.m */,
 			);
 			path = on_the_roadTests;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			files = (
 				DBDE071B1D79E03E00EF020F /* OTRRoutingResultManeuver.m in Sources */,
 				DBDE07181D79E03300EF020F /* OTRRoutingPoint.m in Sources */,
+				7DC7F09E1E73583B009E722B /* OTRRoutingControllerTests.m in Sources */,
 				DBDE071C1D79E04100EF020F /* OTRRoutingTypes.m in Sources */,
 				DBDE071A1D79E03B00EF020F /* OTRRoutingResultLeg.m in Sources */,
 				DBDE07191D79E03700EF020F /* OTRRoutingResult.m in Sources */,

@@ -30,6 +30,12 @@
 /** Create a new routing controller configured to connect to the Mapzen Turn-by-Turn production server. */
 - (instancetype _Nonnull)init;
 
+/** Create a new routing controller configured to connect to the session. Useful for testing
+
+ @param session NSURLSession to route requests through
+ */
+- (instancetype _Nonnull)initWithSessionManager:(NSURLSession* _Nonnull)session;
+
 /**
  Request a route.
  
