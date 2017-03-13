@@ -19,12 +19,7 @@
 @implementation OTRRoutingController
 
 - (instancetype _Nonnull)init {
-  self = [super init];
-  self.baseUrl = @"https://valhalla.mapzen.com/route?";
-  self.urlSessionManager = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-  self.urlQueryComponents = [[NSMutableArray alloc] init];
-  self.locale = [NSLocale currentLocale];
-  return self;
+  return [self initWithSessionManager:[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]]];
 }
 
 - (instancetype _Nonnull)initWithSessionManager:(NSURLSession*  _Nonnull)session {
