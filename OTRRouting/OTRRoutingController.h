@@ -42,7 +42,7 @@
  @param locations Locations to route to/thru
  @param costing Costing mode
  @param costingOptions costing options
- @param directionsOptions options for directions output
+ @param directionsOptions options for directions output. Note that if you request a language that is not supported, the router will default to use english.
  @param callback Callback function. 
 
  @return an NSURLSessionDataTask object that can be used to cancel the routing request before it has completed.
