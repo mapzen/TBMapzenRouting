@@ -11,6 +11,7 @@
 @interface OTRRoutingController ()
 
 @property (nonatomic, strong, nonnull) NSURLSession *urlSessionManager;
+@property (nonatomic, strong, nonnull) NSLocale *locale;
 
 @end
 
@@ -22,6 +23,16 @@
   self.baseUrl = @"https://valhalla.mapzen.com/route?";
   self.urlSessionManager = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
   self.urlQueryComponents = [[NSMutableArray alloc] init];
+  self.locale = [NSLocale currentLocale];
+  return self;
+}
+
+- (instancetype _Nonnull)initWithSessionManager:(NSURLSession*  _Nonnull)session {
+  self = [super init];
+  self.baseUrl = @"https://valhalla.mapzen.com/route?";
+  self.urlSessionManager = session;
+  self.urlQueryComponents = [[NSMutableArray alloc] init];
+  self.locale = [NSLocale currentLocale];
   return self;
 }
 
@@ -54,16 +65,21 @@
     jsonParameters[@"costing_options"] = costingOptions;
   }
   
-  if(directionsOptions) {
-    if(![NSJSONSerialization isValidJSONObject:directionsOptions]) {
-      callback(nil, nil, [NSError errorWithDomain:@"OTRRoutingController"
-                                             code:0
-                                         userInfo:@{NSLocalizedDescriptionKey: @"directionsOptions is not a valid json object"}]);
-      return nil;
-    }
-    jsonParameters[@"directions_options"] = directionsOptions;
+  if(!directionsOptions) {
+    directionsOptions = [NSDictionary dictionaryWithObject:self.locale.languageCode forKey:@"language"];
+  } else if (![directionsOptions.allKeys containsObject:@"language"]) {
+    NSMutableDictionary *mutableOptions = [directionsOptions mutableCopy];
+    [mutableOptions setObject:self.locale.languageCode forKey:@"language"];
+    directionsOptions = mutableOptions;
   }
-  
+  if(![NSJSONSerialization isValidJSONObject:directionsOptions]) {
+    callback(nil, nil, [NSError errorWithDomain:@"OTRRoutingController"
+                                           code:0
+                                       userInfo:@{NSLocalizedDescriptionKey: @"directionsOptions is not a valid json object"}]);
+    return nil;
+  }
+  jsonParameters[@"directions_options"] = directionsOptions;
+
   NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonParameters
                                                      options:0
                                                        error:nil];
