@@ -11,7 +11,6 @@
 @interface OTRRoutingController ()
 
 @property (nonatomic, strong, nonnull) NSURLSession *urlSessionManager;
-@property (nonatomic, strong, nonnull) NSLocale *locale;
 
 @end
 
@@ -27,7 +26,6 @@
   self.baseUrl = @"https://valhalla.mapzen.com/route?";
   self.urlSessionManager = session;
   self.urlQueryComponents = [[NSMutableArray alloc] init];
-  self.locale = [NSLocale currentLocale];
   return self;
 }
 
@@ -61,10 +59,10 @@
   }
   
   if(!directionsOptions) {
-    directionsOptions = [NSDictionary dictionaryWithObject:self.locale.languageCode forKey:@"language"];
+    directionsOptions = [NSDictionary dictionaryWithObject:[NSLocale currentLocale].languageCode forKey:@"language"];
   } else if (![directionsOptions.allKeys containsObject:@"language"]) {
     NSMutableDictionary *mutableOptions = [directionsOptions mutableCopy];
-    [mutableOptions setObject:self.locale.languageCode forKey:@"language"];
+    [mutableOptions setObject:[NSLocale currentLocale].languageCode forKey:@"language"];
     directionsOptions = mutableOptions;
   }
   if(![NSJSONSerialization isValidJSONObject:directionsOptions]) {
