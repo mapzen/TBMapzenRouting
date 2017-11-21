@@ -57,12 +57,14 @@
     }
     jsonParameters[@"costing_options"] = costingOptions;
   }
-  
+
+  NSString *languageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
+
   if(!directionsOptions) {
-    directionsOptions = [NSDictionary dictionaryWithObject:[NSLocale currentLocale].languageCode forKey:@"language"];
+    directionsOptions = [NSDictionary dictionaryWithObject:languageCode forKey:@"language"];
   } else if (![directionsOptions.allKeys containsObject:@"language"]) {
     NSMutableDictionary *mutableOptions = [directionsOptions mutableCopy];
-    [mutableOptions setObject:[NSLocale currentLocale].languageCode forKey:@"language"];
+    [mutableOptions setObject:languageCode forKey:@"language"];
     directionsOptions = mutableOptions;
   }
   if(![NSJSONSerialization isValidJSONObject:directionsOptions]) {
